@@ -1,0 +1,29 @@
+Future<void> clearAppStorage() async {
+    try {
+      // Get the app's document directory
+      final appDir = await getApplicationDocumentsDirectory();
+      // Get a list of all files and directories in the app's document directory
+      final dirContents = appDir.listSync(recursive: true);
+      
+      // Delete each file and directory
+      for (var entity in dirContents) {
+        if (entity is File) {
+          await entity.delete();
+        } else if (entity is Directory) {
+          await entity.delete(recursive: true);
+        }
+      }
+      
+      print('App storage cleared successfully');
+    } catch (e) {
+      print('Error clearing app storage: $e');
+    }
+  }
+
+  Future<void> removeAllTokens(context) async {
+    await storage.deleteAll();
+
+    ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Credentials are removed!!")),
+    );
+  }
