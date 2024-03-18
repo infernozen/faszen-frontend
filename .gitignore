@@ -1,4 +1,5 @@
 # Miscellaneous
+/android/app/src/main/res/values/strings.xml
 *.class
 *.log
 *.pyc
