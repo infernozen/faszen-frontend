@@ -1,3 +1,4 @@
+import 'package:faszen/screens/categories-section/categories_page.dart';
 import 'package:faszen/screens/community-section/community_hub.dart';
 import 'package:faszen/screens/fizard-section/chat_bot.dart';
 import 'package:faszen/screens/home-section/home_page.dart';
@@ -29,7 +30,7 @@ class _InitPageState extends State<InitPage> {
   void _initPages() {
     _pages = [
       ShowCaseWidget(builder: Builder(builder: (context) => HomePage(showSearchBarHelp: widget.showSearchBarHelp ?? false))),
-      const ProfilePage(),
+      const CategoryPage(),
       Chat(ongetBack: onReset),
       CommunityPage(ongetBack: onReset),
       const ProfilePage(),

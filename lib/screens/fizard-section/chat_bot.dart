@@ -32,6 +32,16 @@ class _ChatState extends State<Chat> {
     );
     list.add(ChatModel(type: 'end_space', isUser: isUser));
     _apiService.getGoogleApiToken();
+    list.insert(list.length-1, 
+      ChatModel(type: 'text_with_suggestions', 
+        isUser: false,
+        list: list,
+        index: list.length-1,
+        text: 'Welcome I’m Fizard 🪄 Your fashion guide awaits. Explore trends, find your style, and enjoy effortless shopping. How can I assist you today?',
+        suggestions: const ['Trend Updates','Fashion Advice', 'Size and Fit Assit', 'Outfit Planning'],
+        onListChanged: onListChanged,
+      ),
+    );
   }
 
   Function(List<ChatModel>)? onListChanged(list) {
@@ -55,7 +65,7 @@ class _ChatState extends State<Chat> {
     );
   }
 
-  Future<void> _getResponse()async {
+  Future<void> _getResponse(String text)async {
     final ChatModel response = await _apiService.queryDialogflow(messageController.text , '1234');
     response.list = list;
     response.index = list.length-1;
@@ -193,7 +203,7 @@ class _ChatState extends State<Chat> {
                               ),
                             );
                           });
-                          _getResponse();
+                          _getResponse(messageController.text);
                           messageController.text = "";
                         }
                       },
