@@ -37,6 +37,22 @@ flutter:
   assets:
     - assets/
     - assets/icons/
+    - assets/categories/
+    - assets/categories/Tops/
+    - assets/categories/Bottoms/
+    - assets/categories/Inners/
+    - assets/categories/Athleisure/
+    - assets/categories/Formals/
+    - assets/categories/Casuals/
+    - assets/categories/Desi Wear/
+    - assets/categories/Western Wear/
+    - assets/categories/Street Wear/
+    - assets/categories/Luxury Wear/
+    - assets/categories/Gift Wear/
+    - assets/categories/Footwear/
+    - assets/categories/Hats & Beanies/
+    - assets/categories/Accessories/
+
   
   fonts:
     - family: Poppins

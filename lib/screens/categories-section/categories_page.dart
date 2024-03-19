@@ -12,6 +12,199 @@ class _CategoryPageState extends State<CategoryPage> {
   bool _skipAnimation = false;
   bool showCategory = true;
 
+  Map<String, List<String>> clothingCategories = {
+    'Tops': [
+      'T-shirts',
+      'Shirts',
+      'Blouses',
+      'Tank Tops',
+      'Hoodies',
+      'Sweaters',
+      'Crop Tops',
+      'Tunics',
+      'Peplum Tops',
+      'Off-shoulder',
+      'Sleeveless',
+      'Halter Tops',
+      'Button-down',
+      'Wrap Tops',
+      'Kimonos',
+      'Bodysuits'
+    ],
+    'Bottoms': [
+      'Jeans',
+      'Trousers',
+      'Leggings',
+      'Skirts',
+      'Shorts',
+      'Palazzos',
+      'Culottes',
+      'Jumpsuits',
+      'Capri Pants',
+      'Cargo Pants',
+      'Flared Pants',
+      'Paperbag Pants',
+      'Pleated Skirts',
+      'Denim Shorts',
+      'Wide-leg Trousers',
+      'Cargo Shorts'
+    ],
+    'Inners': [
+      'Underwear',
+      'Bras',
+      'Boxers',
+      'Briefs',
+      'Camisoles',
+      'Slips',
+      'Thermal Wear',
+      'Shapewear'
+    ],
+    'Athleisure': [
+      'Yoga Pants',
+      'Sports Bras',
+      'Athletic Shorts',
+      'Workout Tanks',
+      'Running Leggings',
+      'Track Pants',
+      'Cycling Shorts',
+      'Fitness Jackets'
+    ],
+    'Formals': [
+      'Blazers',
+      'Dress Pants',
+      'Formal Shirts',
+      'Pencil Skirts',
+      'Suit Sets',
+      'Business Dresses',
+      'Corporate Blazers',
+      'Professional Tops'
+    ],
+    'Casuals': [
+      'Denim Jackets',
+      'Graphic T-shirts',
+      'Lounge Pants',
+      'Casual Shorts',
+      'Casual Blazers',
+      'Everyday Tops',
+      'Relaxed Fit Jeans'
+    ],
+    'Desi Wear': [
+      'Sarees',
+      'Kurtas',
+      'Lehengas',
+      'Anarkalis',
+      'Salwar Kameez',
+      'Churidars',
+      'Sherwanis',
+      'Indo-Western',
+      'Patiala Suits',
+      'Dhoti Pants',
+      'Ghagra Cholis',
+      'Bandhani Sarees',
+      'Bandhgala Suits',
+      'Kurta Pyjama',
+      'Pathani Suits',
+      'Achkan Kurtas'
+    ],
+    'Western Wear': [
+      'Maxi Dresses',
+      'Midi Skirts',
+      'Boho Dresses',
+      'Western Jackets',
+      'Denim Skirts',
+      'Graphic Tees',
+      'Peasant Tops',
+      'Rompers',
+      'Sheath Dresses',
+      'A-line Skirts',
+      'Cami Tops',
+      'Pinafore Dresses',
+      'Swing Dresses'
+    ],
+    'Street Wear': [
+      'Graphic Hoodies',
+      'Urban Joggers',
+      'Distressed Jeans',
+      'Skateboard Shorts',
+      'Graffiti Jackets',
+      'Street drip',
+      'Hip Hop Accessories'
+    ],
+    'Luxury Wear': [
+      'Designer Dresses',
+      'Luxury Handbags',
+      'High-End Watches',
+      'Couture Gowns',
+      'Luxury Shoes',
+      'Fine Jewellery',
+      'Exclusive Brands'
+    ],
+    'Gift Wear': [
+      'Baby Sets',
+      'Customized Apparel',
+      'Designer Accessories',
+      'Novelty Items',
+      'Gift Cards',
+      'Occasion Wear',
+      'Gift Hampers'
+    ],
+    'Footwear': [
+      'Sneakers',
+      'Boots',
+      'Flats',
+      'Heels',
+      'Sandals',
+      'Wedges',
+      'Espadrilles',
+      'Loafers',
+      'Mules',
+      'Oxfords',
+      'Platform Shoes',
+      'Ballet Flats',
+      'Slide Sandals',
+      'Flip-flops',
+      'High-tops',
+      'Block Heels'
+    ],
+    'Hats & Beanies': [
+      'Baseball Caps',
+      'Beanies',
+      'Fedora Hats',
+      'Bucket Hats',
+      'Sun Hats',
+      'Trucker Hats',
+      'Berets',
+      'Visors'
+    ],
+    'Accessories': [
+      'Sunglasses',
+      'Belts',
+      'Scarves',
+      'Watches',
+      'Handbags',
+      'Wallets',
+      'Jewellery',
+      'Hair Clips'
+    ],
+  };
+
+  final List<String> popular = [
+    'assets/categories/Tops/Off-shoulder.jpg',
+    'assets/categories/Tops/Crop Tops.jpg',
+    'assets/categories/Tops/Sweaters.jpg',
+    'assets/categories/Bottoms/Palazzos.jpg',
+    'assets/categories/Bottoms/Culottes.jpg',
+    'assets/categories/Formals/Professional Tops.jpg',
+    'assets/categories/Casuals/Denim Jackets.jpg',
+    'assets/categories/Desi Wear/Lehengas.jpg',
+    'assets/categories/Desi Wear/Ghagra Cholis.jpg',
+    'assets/categories/Desi Wear/Sherwanis.jpg',
+    'assets/categories/Desi Wear/Dhoti Pants.jpg',
+    'assets/categories/Western Wear/Maxi Dresses.jpg',
+    'assets/categories/Western Wear/Peasant Tops.jpg',
+    'assets/categories/Street Wear/Graphic Hoodies.jpg',
+  ];
+
   final List<String> categories = [
     "Popular",
     "Tops",
@@ -20,13 +213,13 @@ class _CategoryPageState extends State<CategoryPage> {
     "Athleisure",
     "Formals",
     "Casuals",
-    "Desi-wear",
-    "Western-wear",
-    "Street-wear",
-    "Luxury-wear",
-    "Gift-wear",
+    "Desi Wear",
+    "Western Wear",
+    "Street Wear",
+    "Luxury Wear",
+    "Gift Wear",
     "Footwear",
-    "Hats & Beanie",
+    "Hats & Beanies",
     "Accessories"
   ];
 
@@ -106,13 +299,13 @@ class _CategoryPageState extends State<CategoryPage> {
             Image.asset(
               "assets/icons/search_appbar.png",
               height: MediaQuery.of(context).size.height * 0.075,
-              width:  MediaQuery.of(context).size.width * 0.075,
+              width: MediaQuery.of(context).size.width * 0.075,
             ),
             SizedBox(width: MediaQuery.of(context).size.width * 0.02),
             Image.asset(
               "assets/icons/favourites_appbar.png",
               height: MediaQuery.of(context).size.height * 0.070,
-              width:  MediaQuery.of(context).size.width * 0.070,
+              width: MediaQuery.of(context).size.width * 0.070,
             ),
             SizedBox(width: MediaQuery.of(context).size.width * 0.02),
           ],
@@ -231,9 +424,10 @@ class _CategoryPageState extends State<CategoryPage> {
                           children: [
                             TextDivider(
                               text: categories[index],
-                              textStyle: const TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w500,
-                                color: Color.fromRGBO(219, 219, 227, 1)
-                              ),
+                              textStyle: const TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w500,
+                                  color: Color.fromRGBO(219, 219, 227, 1)),
                             ),
                             ListTile(
                               key: _keys[index],
@@ -249,10 +443,12 @@ class _CategoryPageState extends State<CategoryPage> {
                             Wrap(
                               direction: Axis.horizontal,
                               children: List.generate(
-                                8,
+                                index == 0
+                                    ? popular.length
+                                    : clothingCategories[categories[index]]!
+                                        .length,
                                 (productIndex) {
-                                  final productName =
-                                      'Product ${productIndex + 1}';
+                                  final productName = index == 0 ? popular[productIndex].split('/').last.split('.').first : clothingCategories[categories[index]]![productIndex];
                                   return InkWell(
                                     onTap: () {
                                       // navigateToProductPage(context, productName);
@@ -261,22 +457,35 @@ class _CategoryPageState extends State<CategoryPage> {
                                       children: [
                                         Container(
                                           padding: const EdgeInsets.all(8),
-                                          child: Image.asset(
-                                            'assets/Denim.png',
-                                            width: MediaQuery.of(context)
+                                          child: CircleAvatar(
+                                            backgroundImage: AssetImage(
+                                              index == 0
+                                                  ? popular[productIndex]
+                                                  : 'assets/categories/${categories[index]}/${clothingCategories[categories[index]]![productIndex]}.jpg',
+                                            ),
+                                            radius: MediaQuery.of(context)
                                                     .size
                                                     .width *
-                                                0.2,
+                                                0.1, // Adjust as needed
                                           ),
                                         ),
-                                        Text(
-                                          productName,
-                                          style: const TextStyle(
-                                            fontFamily: 'Poppins',
-                                            color: Colors.black,
-                                            fontSize: 13,
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.215,
+                                          child: Text(
+                                            productName,
+                                            textAlign: TextAlign.center,
+                                            style: const TextStyle(
+                                              fontFamily: 'Poppins',
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black,
+                                              fontSize: 13,
+                                            ),
                                           ),
                                         ),
+                                        const SizedBox(height: 5),
                                       ],
                                     ),
                                   );
