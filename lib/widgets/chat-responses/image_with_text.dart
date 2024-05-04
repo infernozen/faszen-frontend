@@ -116,7 +116,7 @@ class _ImageWithTextState extends State<ImageWithText> {
                                       child: !_isFullScreen
                                           ? Image.network(
                                               widget.imageUrl!,
-                                              fit: BoxFit.contain,
+                                              fit: BoxFit.cover,
                                             )
                                           : Container(
                                               decoration: BoxDecoration(
@@ -263,7 +263,7 @@ class _ImageWithTextState extends State<ImageWithText> {
                                 child: !_isFullScreen
                                     ? Image.network(
                                         widget.imageUrl!,
-                                        fit: BoxFit.contain,
+                                        fit: BoxFit.cover,
                                       )
                                     : Container(
                                         decoration: BoxDecoration(
