@@ -1,3 +1,4 @@
+import 'package:faszen/screens/categories-section/searchdisplay.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -451,7 +452,13 @@ class _CategoryPageState extends State<CategoryPage> {
                                   final productName = index == 0 ? popular[productIndex].split('/').last.split('.').first : clothingCategories[categories[index]]![productIndex];
                                   return InkWell(
                                     onTap: () {
-                                      // navigateToProductPage(context, productName);
+                                      Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        SearchDisplayPage(
+                                                            productName:
+                                                                productName)));
                                     },
                                     child: Column(
                                       children: [

@@ -1,4 +1,5 @@
 import 'package:faszen/screens/home-section/product_display.dart';
+import 'package:faszen/screens/home-section/searchpage.dart';
 import 'package:faszen/widgets/carrousal_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:showcaseview/showcaseview.dart';
@@ -165,75 +166,93 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.only(left: 12, right: 12),
-              child: Stack(
-                children: [
-                  Showcase(
-                    key: searchBar[0],
-                    descTextStyle: const TextStyle(fontFamily: 'Poppins', fontSize: 16, fontWeight: FontWeight.w500),
-                    description: 'Discover with precision. Search keywords, product names, or categories to explore trendy fashion, tech gadgets, or exquisite home decor effortlessly.',
-                    targetBorderRadius: BorderRadius.circular(20),
-                    child: TextFormField(
-                      controller: searchcontroller,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: const BorderSide(
-                              color: Color(0xFFBABABA),
-                            )),
-                        labelStyle: const TextStyle(
+            GestureDetector(
+              onTap:() =>{
+                Navigator.push(context,MaterialPageRoute(builder: (context) => const SearchBarPage()))
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(left: 12, right: 12),
+                child: Stack(
+                  children: [
+                    Showcase(
+                      key: searchBar[0],
+                      descTextStyle: const TextStyle(
                           fontFamily: 'Poppins',
-                          color: Color(0xFFBABABA),
-                        ),
-                        labelText: "Search by keyword or Product ID",
-                        prefixIcon: Padding(
-                          padding: const EdgeInsets.only(left: 15),
-                          child: Row(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                      description:
+                          'Discover with precision. Search keywords, product names, or categories to explore trendy fashion, tech gadgets, or exquisite home decor effortlessly.',
+                      targetBorderRadius: BorderRadius.circular(20),
+                      child: TextFormField(
+                        controller: searchcontroller,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: const BorderSide(
+                                color: Color(0xFFBABABA),
+                              )),
+                          labelStyle: const TextStyle(
+                            fontFamily: 'Poppins',
+                            color: Color(0xFFBABABA),
+                          ),
+                          labelText: "Search by keyword or Product ID",
+                          enabled:false,
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.only(left: 15),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Image.asset('assets/search.png',
+                                    height: 30, width: 30),
+                              ],
+                            ),
+                          ),
+                          suffixIcon: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Image.asset('assets/search.png',
-                                  height: 30, width: 30),
+                              Container(
+                                height: 60.0, // Height equal to TextFormField
+                                width: 1.0, // Full width
+                                color: const Color(
+                                    0xFFBABABA), // Color of the lin // Adjust margin as needed
+                              ),
+                              Showcase(
+                                key: searchBar[1],
+                                descTextStyle: const TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500),
+                                description:
+                                    'Simply say what you\'re looking for, and let our microphone search feature find it for you.',
+                                child: Padding(
+                                  padding: const EdgeInsets.all(5),
+                                  child: Image.asset('assets/mic.png',
+                                      height: 25, width: 25),
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              Showcase(
+                                key: searchBar[2],
+                                descTextStyle: const TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500),
+                                description:
+                                    'Upload an image, and our search feature will find similar items for you. Explore visually and find what you love with ease.',
+                                child: Padding(
+                                  padding: const EdgeInsets.all(5),
+                                  child: Image.asset('assets/camera.png',
+                                      height: 25, width: 25),
+                                ),
+                              ),
+                              const SizedBox(width: 5),
                             ],
                           ),
                         ),
-                        suffixIcon: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Container(
-                              height: 60.0, // Height equal to TextFormField
-                              width: 1.0, // Full width
-                              color: const Color(
-                                  0xFFBABABA), // Color of the lin // Adjust margin as needed
-                            ),
-                            Showcase(
-                              key: searchBar[1],
-                              descTextStyle: const TextStyle(fontFamily: 'Poppins', fontSize: 16, fontWeight: FontWeight.w500),
-                              description: 'Simply say what you\'re looking for, and let our microphone search feature find it for you.',
-                              child: Padding(
-                                padding: const EdgeInsets.all(5),
-                                child: Image.asset('assets/mic.png',
-                                    height: 25, width: 25),
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                            Showcase(
-                              key: searchBar[2],
-                              descTextStyle: const TextStyle(fontFamily: 'Poppins', fontSize: 16, fontWeight: FontWeight.w500),
-                              description: 'Upload an image, and our search feature will find similar items for you. Explore visually and find what you love with ease.',
-                              child: Padding(
-                                padding: const EdgeInsets.all(5),
-                                child: Image.asset('assets/camera.png',
-                                    height: 25, width: 25),
-                              ),
-                            ),
-                            const SizedBox(width: 5),
-                          ],
-                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 20),
@@ -587,7 +606,7 @@ class _HomePageState extends State<HomePage> {
                     fontWeight: FontWeight.w600),
               ),
             ),
-            const ProductDisplay(),
+            const ProductDisplayPage(),
           ],
         ),
       ),

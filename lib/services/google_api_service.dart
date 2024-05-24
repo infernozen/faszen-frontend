@@ -60,6 +60,10 @@ class ApiService {
           final List<String> stringSuggestions = suggestions.map((suggestion) => suggestion.toString()).toList();
           return ChatModel(type: 'text_with_suggestions', isUser: false, suggestions: stringSuggestions, text: payloadData['text_with_suggestions']['text'] );
         }
+        else if(payloadData.containsKey('text_with_product')){
+          Map<String, dynamic> product = payloadData['text_with_product']['product'];
+          return ChatModel(type: 'text_with_product', isUser: false, imageUrl: payloadData['text_with_product']['imageUrl'], text: payloadData['text_with_product']['text'], product: product);
+        }
       }
     } else {
       throw Exception('Failed to query Dialogflow');

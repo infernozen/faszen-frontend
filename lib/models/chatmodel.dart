@@ -1,3 +1,4 @@
+import 'package:faszen/widgets/chat-responses/text_with_product.dart';
 import 'package:faszen/widgets/chat-responses/user_text_response.dart';
 import 'package:flutter/material.dart';
 import 'package:faszen/widgets/chat-responses/bot_text_response.dart';
@@ -7,6 +8,8 @@ import 'package:faszen/widgets/chat-responses/response_suggestions.dart';
 
 // ignore: must_be_immutable
 class ChatModel extends StatelessWidget {
+  
+
   ChatModel({
     super.key,
     required this.type,
@@ -25,6 +28,7 @@ class ChatModel extends StatelessWidget {
     this.buttontext,
     this.buttonurl,
     this.suggestions,
+    this.product
   });
 
 
@@ -35,6 +39,7 @@ class ChatModel extends StatelessWidget {
   List<ChatModel>? list;
   Function(List<ChatModel>)? onListChanged;
 
+  final Map<String, dynamic>? product;
   final List<String>? suggestions;
   final String? date;
   final String? text;
@@ -71,6 +76,15 @@ class ChatModel extends StatelessWidget {
           imageUrl: imageUrl!,
           index: index, 
           list: list, 
+        );
+
+      case "text_with_product":
+        return ProductWithText(
+          text: text,
+          imageUrl: imageUrl!,
+          index: index, 
+          list: list, 
+          product: product!
         );
 
       case "text_with_suggestions":

@@ -38,12 +38,12 @@ class _LoginPageState extends State<LoginPage> {
       final isAuthenticated = await _authService.signIn(widget.email, password);
 
       if (isAuthenticated) {
-        Navigator.push(
+        Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(
-            builder: (context) => InitPage(),
-          ),
+          MaterialPageRoute(builder: (context) => InitPage()),
+          (Route<dynamic> route) => false,
         );
+
       } else {
         setState(() {
           isValid = false;

@@ -25,6 +25,15 @@ dependencies:
   path_provider: ^2.1.2
   intl: ^0.19.0
   showcaseview: ^2.0.3
+  audioplayers: ^5.2.1
+  lottie: ^3.1.2
+  drop_cap_text: ^1.1.3
+  camerakit_flutter: ^1.0.0
+  carousel_slider: ^4.2.1
+  o3d: ^3.1.0
+  dio: ^5.1.0
+  url_launcher: ^6.2.6
+  fuzzywuzzy: ^1.1.6
 
 dev_dependencies:
   flutter_test:
@@ -36,7 +45,10 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/Animation - 1713787363552.json
+    - assets/audio/
     - assets/icons/
+    - android/app/src/main/res/mipmap-xxxhdpi/logo.png
     - assets/categories/
     - assets/categories/Tops/
     - assets/categories/Bottoms/
