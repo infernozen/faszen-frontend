@@ -1,24 +1,27 @@
 import 'dart:io';
 import 'package:faszen/screens/auth/email_page.dart';
 import 'package:faszen/screens/profile-section/profile_edit.dart';
+import 'package:faszen/screens/profile-section/reminder.dart';
 import 'package:faszen/services/storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+  final bool showProfileHelp;
+  const ProfilePage({super.key, required this.showProfileHelp});
 
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  List<GlobalKey> profile = List.generate(1, (_) => GlobalKey());
   Image? _imageFile;
   String profileName = '';
   String creationDate = 'dd.mm.yyyy';
   final StorageService _storageService = StorageService();
-  
 
   Future<void> createDirectory() async {
     try {
@@ -92,6 +95,11 @@ class _ProfilePageState extends State<ProfilePage> {
   void initState() {
     super.initState();
     _loadProfileData();
+    if (widget.showProfileHelp) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ShowCaseWidget.of(context).startShowCase([...profile]);
+      });
+    }
   }
 
   Future<void> _loadProfileData() async {
@@ -126,6 +134,14 @@ class _ProfilePageState extends State<ProfilePage> {
   String _capitalizeFirstLetter(String input) {
     if (input.isEmpty) return '';
     return input[0].toUpperCase() + input.substring(1);
+  }
+
+  void _navigateToEditProfilePage() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => ShowCaseWidget(builder: Builder(builder: (context) => const EditProfilePage(showProfileInfoHelp: true))),
+      ),
+    );
   }
 
   @override
@@ -218,15 +234,30 @@ class _ProfilePageState extends State<ProfilePage> {
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
               ),
-              child: IconButton(
-                icon: const Icon(Icons.mode_edit_outlined, color: Colors.white),
-                onPressed: () => {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const EditProfilePage(),
-                    ),
-                  )
-                },
+              child: Showcase(
+                key: profile[0],
+                onBarrierClick: _navigateToEditProfilePage,
+                onToolTipClick: _navigateToEditProfilePage,
+                onTargetClick: _navigateToEditProfilePage,
+                disposeOnTap: true,
+                descTextStyle: const TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500),
+                description:
+                    'In your profile page, you can update your personal information, size preferences, and style preferences. This helps us tailor our recommendations just for you. Let me take you there :)',
+                targetBorderRadius: BorderRadius.circular(20),
+                child: IconButton(
+                  icon:
+                      const Icon(Icons.mode_edit_outlined, color: Colors.white),
+                  onPressed: () => {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => ShowCaseWidget(builder: Builder(builder: (context) => const EditProfilePage(showProfileInfoHelp: false))),
+                      ),
+                    )
+                  },
+                ),
               ),
             ),
           ),
@@ -313,14 +344,19 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 24,
                     ),
                     title: const Text(
-                      'Blog',
+                      'Reminder',
                       style: TextStyle(
                           fontFamily: 'Poppins',
                           fontSize: 18,
                           fontWeight: FontWeight.w600),
                     ),
                     trailing: const Icon(Icons.arrow_forward_ios_sharp),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const CustomCalendar()));
+                    },
                   ),
                   const SizedBox(height: 35),
                   ListTile(
@@ -375,7 +411,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const EmailPage(), 
+                          builder: (context) => const EmailPage(),
                         ),
                       );
                     },

@@ -148,20 +148,21 @@ class _ProductWithTextState extends State<ProductWithText> {
                                             rating: double.parse(widget.product['rating']),
                                             price: double.parse(widget.product['price']),
                                             organizationImageUrl: List<String>.from(
-                                                widget.product['organisationImageUrl']).first,
+                                                widget.product['organisationImageUrl'])[0],
                                             name: widget.product['name'],
-                                            description:
-                                                List<String>.from(widget.product['description']),
-                                            arLensID: widget.product['model3D'],
-                                            model3D: widget.product['arLensID'],
+                                            description: widget.product['description'] != null &&
+                                                    widget.product['description'] is List
+                                                ? List<String>.from(widget.product['description'])
+                                                : [],
+                                            arLensID: widget.product['arLensID'],
+                                            model3D: widget.product['model3D'],
                                             isAvailable: widget.product['isAvailable']
                                                     .toString()
                                                     .toLowerCase() ==
                                                 'true',
-                                            isActive: widget.product['isActive']
-                                                    .toString()
-                                                    .toLowerCase() ==
-                                                'true',
+                                            isActive:
+                                                widget.product['isActive'].toString().toLowerCase() ==
+                                                    'true',
                                             is3Davailable: widget.product['is3Davailable']
                                                     .toString()
                                                     .toLowerCase() ==
@@ -170,15 +171,29 @@ class _ProductWithTextState extends State<ProductWithText> {
                                                     .toString()
                                                     .toLowerCase() ==
                                                 'true',
-                                            sizes: List<String>.from(widget.product['sizes']),
-                                            rediretLink:
-                                                List<String>.from(widget.product['redirectLinks']).first,
-                                            images: List<String>.from(widget.product['images']),
-                                            similarproducts:
-                                                List<String>.from(widget.product['similarProducts']),
-                                            variants: List<String>.from(widget.product['variants']),
-                                            tags: List<String>.from(widget.product['tags']), 
-                                            organizationName: 'AMAZON SHOPPING',
+                                            sizes: widget.product['sizes'] != null &&
+                                                    widget.product['sizes'] is List
+                                                ? List<String>.from(widget.product['sizes'])
+                                                : [],
+                                            rediretLink: widget.product['redirectLinks'] != null &&
+                                                    widget.product['redirectLinks'] is List &&
+                                                    widget.product['redirectLinks'].isNotEmpty
+                                                ? List<String>.from(widget.product['redirectLinks'])[0]
+                                                : ' ',
+                                            images: widget.product['images'] != null &&
+                                                    widget.product['images'] is List
+                                                ? List<String>.from(widget.product['images'])
+                                                : [],
+                                            similarproducts: widget.product['similarProducts'] !=
+                                                        null &&
+                                                    widget.product['similarProducts'] is List
+                                                ? List<String>.from(widget.product['similarProducts'])
+                                                : [],
+                                            variants: widget.product['variants'] != null &&
+                                                    widget.product['variants'] is List
+                                                ? List<String>.from(widget.product['variants'])
+                                                : [],
+                                            tags: List<String>.from(widget.product['tags']), organizationName: '',
                                           )));
                                         });
                                       },
@@ -286,42 +301,57 @@ class _ProductWithTextState extends State<ProductWithText> {
                                       checkNULL();
                                           Navigator.push(context,MaterialPageRoute ( builder : (context) => Product(
                                             id: widget.product['id'].toString(),
-                                            title: widget.product['title'],
-                                            category: widget.product['category'],
-                                            rating: double.parse(widget.product['rating']),
-                                            price: double.parse(widget.product['price']),
-                                            organizationImageUrl: List<String>.from(
-                                                widget.product['organisationImageUrl']).first,
-                                            name: widget.product['name'],
-                                            description:
-                                                List<String>.from(widget.product['description']),
-                                            arLensID: widget.product['model3D'],
-                                            model3D: widget.product['arLensID'],
-                                            isAvailable: widget.product['isAvailable']
-                                                    .toString()
-                                                    .toLowerCase() ==
-                                                'true',
-                                            isActive: widget.product['isActive']
-                                                    .toString()
-                                                    .toLowerCase() ==
-                                                'true',
-                                            is3Davailable: widget.product['is3Davailable']
-                                                    .toString()
-                                                    .toLowerCase() ==
-                                                'true',
-                                            isARTryOnAvailable: widget.product['isARTryOnAvailable']
-                                                    .toString()
-                                                    .toLowerCase() ==
-                                                'true',
-                                            sizes: List<String>.from(widget.product['sizes']),
-                                            rediretLink:
-                                                List<String>.from(widget.product['redirectLinks']).first,
-                                            images: List<String>.from(widget.product['images']),
-                                            similarproducts:
-                                                List<String>.from(widget.product['similarProducts']),
-                                            variants: List<String>.from(widget.product['variants']),
-                                            tags: List<String>.from(widget.product['tags']), 
-                                            organizationName: 'AMAZON SHOPPING',
+                              title: widget.product['title'],
+                              category: widget.product['category'],
+                              rating: double.parse(widget.product['rating']),
+                              price: double.parse(widget.product['price']),
+                              organizationImageUrl: List<String>.from(
+                                  widget.product['organisationImageUrl'])[0],
+                              name: widget.product['name'],
+                              description: widget.product['description'] != null &&
+                                      widget.product['description'] is List
+                                  ? List<String>.from(widget.product['description'])
+                                  : [],
+                              arLensID: widget.product['arLensID'],
+                              model3D: widget.product['model3D'],
+                              isAvailable: widget.product['isAvailable']
+                                      .toString()
+                                      .toLowerCase() ==
+                                  'true',
+                              isActive:
+                                  widget.product['isActive'].toString().toLowerCase() ==
+                                      'true',
+                              is3Davailable: widget.product['is3Davailable']
+                                      .toString()
+                                      .toLowerCase() ==
+                                  'true',
+                              isARTryOnAvailable: widget.product['isARTryOnAvailable']
+                                      .toString()
+                                      .toLowerCase() ==
+                                  'true',
+                              sizes: widget.product['sizes'] != null &&
+                                      widget.product['sizes'] is List
+                                  ? List<String>.from(widget.product['sizes'])
+                                  : [],
+                              rediretLink: widget.product['redirectLinks'] != null &&
+                                      widget.product['redirectLinks'] is List &&
+                                      widget.product['redirectLinks'].isNotEmpty
+                                  ? List<String>.from(widget.product['redirectLinks'])[0]
+                                  : ' ',
+                              images: widget.product['images'] != null &&
+                                      widget.product['images'] is List
+                                  ? List<String>.from(widget.product['images'])
+                                  : [],
+                              similarproducts: widget.product['similarProducts'] !=
+                                          null &&
+                                      widget.product['similarProducts'] is List
+                                  ? List<String>.from(widget.product['similarProducts'])
+                                  : [],
+                              variants: widget.product['variants'] != null &&
+                                      widget.product['variants'] is List
+                                  ? List<String>.from(widget.product['variants'])
+                                  : [],
+                              tags: List<String>.from(widget.product['tags']), organizationName: '',
                                           )));
                                     });
                                   },

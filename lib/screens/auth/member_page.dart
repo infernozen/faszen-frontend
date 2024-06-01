@@ -324,7 +324,7 @@ class _MemberOtpPageState extends State<MemberOtpPage> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => InitPage(),
+            builder: (context) => InitPage(showProfileEditHelp: false),
           ),
         );
       } else {

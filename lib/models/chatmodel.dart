@@ -28,7 +28,8 @@ class ChatModel extends StatelessWidget {
     this.buttontext,
     this.buttonurl,
     this.suggestions,
-    this.product
+    this.product,
+    this.destination
   });
 
 
@@ -38,6 +39,7 @@ class ChatModel extends StatelessWidget {
   int? index;
   List<ChatModel>? list;
   Function(List<ChatModel>)? onListChanged;
+  String? destination;
 
   final Map<String, dynamic>? product;
   final List<String>? suggestions;
@@ -99,6 +101,7 @@ class ChatModel extends StatelessWidget {
       case "text_with_button":
         return BotWidgetButton(
           text: text,
+          destination: destination!,
           index: index, 
           list: list
         );

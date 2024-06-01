@@ -9,7 +9,8 @@ import 'package:showcaseview/showcaseview.dart';
 // ignore: must_be_immutable
 class InitPage extends StatefulWidget {
   bool? showSearchBarHelp;
-  InitPage({super.key, this.showSearchBarHelp});
+  bool? showProfileEditHelp = false;
+  InitPage({super.key, this.showSearchBarHelp, this.showProfileEditHelp});
 
   @override
   State<InitPage> createState() => _InitPageState();
@@ -25,6 +26,11 @@ class _InitPageState extends State<InitPage> {
   void initState() {
     super.initState();
     _initPages();
+    setState(() {
+      if(widget.showProfileEditHelp!){
+        currentPageIndex = 4;
+      }
+    });
   }
 
   void _initPages() {
@@ -33,7 +39,7 @@ class _InitPageState extends State<InitPage> {
       const CategoryPage(),
       Chat(ongetBack: onReset),
       CommunityPage(ongetBack: onReset),
-      const ProfilePage(),
+      ShowCaseWidget(builder: Builder(builder: (context) => ProfilePage(showProfileHelp: widget.showProfileEditHelp ?? false))),
     ];
   }
 
@@ -42,6 +48,7 @@ class _InitPageState extends State<InitPage> {
       currentPageIndex = 0;
       _showBottomNavigationBar = true;
       widget.showSearchBarHelp = false;
+      widget.showProfileEditHelp = false;
     });
   }
 
@@ -66,6 +73,7 @@ class _InitPageState extends State<InitPage> {
                     }
                     currentPageIndex = index;
                     widget.showSearchBarHelp = false;
+                    widget.showProfileEditHelp = false;
                   });
                 },
                 destinations: <NavigationDestination>[

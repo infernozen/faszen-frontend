@@ -1,4 +1,6 @@
+import 'package:faszen/screens/init_page.dart';
 import 'package:faszen/widgets/gradient_border.dart';
+import 'package:showcaseview/showcaseview.dart';
 import '../../models/calculatewidth.dart';
 import 'package:flutter/material.dart';
 import 'package:faszen/models/chatmodel.dart';
@@ -10,12 +12,40 @@ class BotWidgetButton extends StatelessWidget {
       {super.key,
       this.text,
       required this.index,
-      required this.list
-      });
+      required this.destination,
+      required this.list});
   String? text;
+  String destination;
   int? index;
   bool showshimmer = false;
   List<ChatModel>? list;
+
+  void naivagator(context) {
+    switch (destination) {
+      case "search":
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ShowCaseWidget(
+                builder: Builder(
+                    builder: (context) => InitPage(showSearchBarHelp: true, showProfileEditHelp: false ))),
+          ),
+        );
+        break;
+      case "profile_edit":
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ShowCaseWidget(
+                builder: Builder(
+                    builder: (context) =>
+                        InitPage(showProfileEditHelp: true))),
+          ),
+        );
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -32,7 +62,7 @@ class BotWidgetButton extends StatelessWidget {
                   list![index!].isShimmer = true;
                   return FutureBuilder<void>(
                     future: Future.delayed(
-                        const Duration(seconds: 2)), // Delay for 3 seconds
+                        const Duration(seconds: 2)), 
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return AnimatedBox();
@@ -98,44 +128,53 @@ class BotWidgetButton extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 10),
-                            Container(
-                              height: 45, // Height of the button
-                              width: MediaQuery.of(context).size.width * 0.35, // Width of the button
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(25), // Button border radius
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.25), // Box shadow color
-                                    blurRadius: 4, // Box shadow blur radius
-                                    offset: const Offset(0, 4), // Box shadow offset
-                                  ),
-                                ],
-                                border: const GradientBorder(
-                                borderGradient: LinearGradient(
-                                  colors: [
-                                    Color(0xFFDB71E5),
-                                    Color(0xFFB763CB),
-                                    Color(0xFF9556B3),
-                                    Color(0xFF8D53AD),
-                                    Color(0xFF453879),
+                            GestureDetector(
+                              onTap: () {
+                                naivagator(context);
+                              },
+                              child: Container(
+                                height: 45, // Height of the button
+                                width: MediaQuery.of(context).size.width *
+                                    0.35, // Width of the button
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(
+                                      25), // Button border radius
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(
+                                          0.25), // Box shadow color
+                                      blurRadius: 4, // Box shadow blur radius
+                                      offset: const Offset(
+                                          0, 4), // Box shadow offset
+                                    ),
                                   ],
-                                  tileMode: TileMode.repeated,
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                  stops: [0, 0.2, 0.4, 0.6, 1],
-                                  transform: GradientRotation(0.0),
+                                  border: const GradientBorder(
+                                    borderGradient: LinearGradient(
+                                      colors: [
+                                        Color(0xFFDB71E5),
+                                        Color(0xFFB763CB),
+                                        Color(0xFF9556B3),
+                                        Color(0xFF8D53AD),
+                                        Color(0xFF453879),
+                                      ],
+                                      tileMode: TileMode.repeated,
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      stops: [0, 0.2, 0.4, 0.6, 1],
+                                      transform: GradientRotation(0.0),
+                                    ),
+                                    width: 2.5,
+                                  ),
                                 ),
-                                width: 2.5,
-                              ),
-                              ),
-                              child: const Center(
-                                child: Text(
-                                  'Guide Spell 🔮',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
+                                child: const Center(
+                                  child: Text(
+                                    'Guide Spell 🔮',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -151,7 +190,8 @@ class BotWidgetButton extends StatelessWidget {
                     children: [
                       Container(
                         width: maxWidth !=
-                                calculateContainerWidth(context, maxWidth, text!)
+                                calculateContainerWidth(
+                                    context, maxWidth, text!)
                             ? null
                             : maxWidth,
                         decoration: BoxDecoration(
@@ -206,44 +246,52 @@ class BotWidgetButton extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      Container(
-                        height: 45, // Height of the button
-                        width: MediaQuery.of(context).size.width * 0.35, // Width of the button
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(25), // Button border radius
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.25), // Box shadow color
-                              blurRadius: 4, // Box shadow blur radius
-                              offset: const Offset(0, 4), // Box shadow offset
-                            ),
-                          ],
-                          border: const GradientBorder(
-                          borderGradient: LinearGradient(
-                            colors: [
-                              Color(0xFFDB71E5),
-                              Color(0xFFB763CB),
-                              Color(0xFF9556B3),
-                              Color(0xFF8D53AD),
-                              Color(0xFF453879),
+                      GestureDetector(
+                        onTap: () {
+                          naivagator(context);
+                        },
+                        child: Container(
+                          height: 45, // Height of the button
+                          width: MediaQuery.of(context).size.width *
+                              0.35, // Width of the button
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(
+                                25), // Button border radius
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black
+                                    .withOpacity(0.25), // Box shadow color
+                                blurRadius: 4, // Box shadow blur radius
+                                offset: const Offset(0, 4), // Box shadow offset
+                              ),
                             ],
-                            tileMode: TileMode.repeated,
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            stops: [0, 0.2, 0.4, 0.6, 1],
-                            transform: GradientRotation(0.0),
+                            border: const GradientBorder(
+                              borderGradient: LinearGradient(
+                                colors: [
+                                  Color(0xFFDB71E5),
+                                  Color(0xFFB763CB),
+                                  Color(0xFF9556B3),
+                                  Color(0xFF8D53AD),
+                                  Color(0xFF453879),
+                                ],
+                                tileMode: TileMode.repeated,
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                stops: [0, 0.2, 0.4, 0.6, 1],
+                                transform: GradientRotation(0.0),
+                              ),
+                              width: 2.5,
+                            ),
                           ),
-                          width: 2.5,
-                        ),
-                        ),
-                        child: const Center(
-                          child: Text(
-                            'Guide Spell 🔮',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
+                          child: const Center(
+                            child: Text(
+                              'Guide Spell 🔮',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),

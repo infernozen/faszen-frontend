@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
       if (isAuthenticated) {
         Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => InitPage()),
+          MaterialPageRoute(builder: (context) => InitPage(showProfileEditHelp: false)),
           (Route<dynamic> route) => false,
         );
 

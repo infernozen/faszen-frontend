@@ -45,31 +45,31 @@ class _HomePageState extends State<HomePage> {
     "assets/photos/photo6.png"
   ];
   List<String> categoryImages = [
-    "assets/category1.png",
-    "assets/category2.png",
-    "assets/category3.png",
-    "assets/category4.png",
-    "assets/category5.png"
+     "assets/Categorie.png",
+    "assets/Indic Wear.png",
+    "assets/Westernwear.png",
+    "assets/Accessories.png",
+    "assets/Footwear.png"
   ];
   List<String> WeddingImages = [
-    "assets/weddingimage1.png",
-    "assets/weddingimage2.png",
-    "assets/weddingimage3.png",
-    "assets/weddingimage4.png",
-    "assets/weddingimage5.png",
-    "assets/weddingimage6.png",
-    "assets/weddingimage7.png",
-    "assets/weddingimage8.png"
+    "assets/Silk Dhoti.jpg",
+    "assets/Wedding Suit.jpg",
+    "assets/Sherwani.jpg",
+    "assets/Catholic Gown.jpeg",
+    "assets/Kurtis.jpg",
+    "assets/Salwar Kameez.jpg",
+    "assets/Lehanga.jpg",
+    "assets/Saree.jpg"
   ];
   List<String> WeddingImagesText = [
-    "Saree",
-    "Lehanga",
-    "Salwar Kameez",
-    "Kurtis",
-    "Catholic Gown",
-    "Sherwani",
+    "Silk Dhoti",
     "Wedding Suit",
-    "Silk Dhoti"
+    "Sherwani",
+    "Catholic Gown",
+    "Kurtis",
+    "Salwar Kameez",
+    "Lehanga",
+    "Saree"
   ];
   List<String> choices = [
     "All",
@@ -93,17 +93,235 @@ class _HomePageState extends State<HomePage> {
     "Other Special Occasions"
   ];
   List<String> allImages = [
-    "assets/allimage1.png",
-    "assets/allimage2.png",
-    "assets/allimage1.png",
-    "assets/allimage4.png"
+    // Summer
+    "assets/Double Denim.jpg",
+    "assets/Easy Neutrals.jpg",
+    "assets/The Micro Mini.jpg",
+    "assets/Summer Corsetry.jpg",
+    "assets/The Shirtdress.jpg",
+    "assets/Public Pajamas.jpg",
+    "assets/Going West.jpg",
+    "assets/Nautical or Nice.jpg",
+    "assets/Brunch-Ready.jpg",
+    "assets/Animal Prints.jpg",
+    "assets/Boho Chic.jpg",
+    "assets/Pop of Red.jpg",
+    
+    // Winter
+    "assets/Shearling.jpg",
+    "assets/Goth Era.jpg",
+    "assets/Cropped Jackets.jpg",
+    "assets/Business Casual.jpg",
+    "assets/Precious Cargo.jpg",
+    "assets/Dark Florals.jpg",
+    "assets/Back to Basics.jpg",
+    "assets/Baggy Jeans.jpg",
+    "assets/Anti-Logo.jpg",
+    
+    // Spring
+    "assets/All Things Y2K.jpg",
+    "assets/Bold Colors.jpg",
+    "assets/Bold Suits.jpg",
+    "assets/Colorblocking.jpg",
+    "assets/Fanny Packs.jpg",
+    "assets/Micro Minis.jpg",
+    "assets/More Metallics.jpg",
+    "assets/Overalls.jpg",
+    "assets/Parachute Pants.jpg",
+    "assets/Prairiecore.jpg",
+    "assets/Sheer Slips.jpg",
+    
+    // Fall
+    "assets/Pop of Color.jpg",
+    "assets/Bare-Leg Fall.jpg",
+    "assets/Off-Duty.jpg",
+    "assets/Everyday Floral.jpg",
+    "assets/Sans-Pants.jpg",
+    "assets/Wild Fall.jpg",
+    "assets/Streetwear Fall.jpg",
+    "assets/Textural.jpg",
+    "assets/Rainy Day.jpg",
+    "assets/Leather Trench.jpg",
+    "assets/Transitional.jpg",
+    "assets/Cinched-Waist.jpg",
+    "assets/Classic Twist.jpg",
+    "assets/Asymmetric.jpg",
+    "assets/Ultra-Long Coat.jpg"
+];
+
+List<String> allImagesText = [
+    // Summer
+    "Double Denim",
+    "Easy Neutrals",
+    "The Micro Mini",
+    "Summer Corsetry",
+    "The Shirtdress",
+    "Public Pajamas",
+    "Going West",
+    "Nautical or Nice",
+    "Brunch-Ready",
+    "Animal Prints",
+    "Boho Chic",
+    "Pop of Red",
+    
+    // Winter
+    "Shearling",
+    "Goth Era",
+    "Cropped Jackets",
+    "Business Casual",
+    "Precious Cargo",
+    "Dark Florals",
+    "Back to Basics",
+    "Baggy Jeans",
+    "Anti-Logo",
+    
+    // Spring
+    "All Things Y2K",
+    "Bold Colors",
+    "Bold Suits",
+    "Colorblocking",
+    "Fanny Packs",
+    "Micro Minis",
+    "More Metallics",
+    "Overalls",
+    "Parachute Pants",
+    "Prairiecore",
+    "Sheer Slips",
+    
+    // Fall
+    "Pop of Color",
+    "Bare-Leg Fall",
+    "Off-Duty",
+    "Everyday Floral",
+    "Sans-Pants",
+    "Wild Fall",
+    "Streetwear Fall",
+    "Textural",
+    "Rainy Day",
+    "Leather Trench",
+    "Transitional",
+    "Cinched-Waist",
+    "Classic Twist",
+    "Asymmetric",
+    "Ultra-Long Coat"
+];
+
+  List<String> winterImages = [
+    "assets/Shearling.jpg",
+    "assets/Goth Era.jpg",
+    "assets/Cropped Jackets.jpg",
+    "assets/Business Casual.jpg",
+    "assets/Precious Cargo.jpg",
+    "assets/Dark Florals.jpg",
+    "assets/Back to Basics.jpg",
+    "assets/Baggy Jeans.jpg",
+    "assets/Anti-Logo.jpg"
+];
+
+List<String> winterImagesText = [
+    "Shearling",
+    "Goth Era",
+    "Cropped Jackets",
+    "Business Casual",
+    "Precious Cargo",
+    "Dark Florals",
+    "Back to Basics",
+    "Baggy Jeans",
+    "Anti-Logo"
+];
+
+  List<String> summerImages = [
+    "assets/Double Denim.jpg",
+    "assets/Easy Neutrals.jpg",
+    "assets/The Micro Mini.jpg",
+    "assets/Summer Corsetry.jpg",
+    "assets/The Shirtdress.jpg",
+    "assets/Public Pajamas.jpg",
+    "assets/Going West.jpg",
+    "assets/Nautical or Nice.jpg",
+    "assets/Brunch-Ready.jpg",
+    "assets/Animal Prints.jpg",
+    "assets/Boho Chic.jpg",
+    "assets/Pop of Red.jpg"
   ];
-  List<String> allImagesText = [
-    "Old Money",
-    "All-over",
-    "Oversized",
-    "Varsity Jackets"
+
+  List<String> summerImagesText = [
+      "Double Denim",
+      "Easy Neutrals",
+      "The Micro Mini",
+      "Summer Corsetry",
+      "The Shirtdress",
+      "Public Pajamas",
+      "Going West",
+      "Nautical or Nice",
+      "Brunch-Ready",
+      "Animal Prints",
+      "Boho Chic",
+      "Pop of Red"
   ];
+  List<String> springImages = [
+    "assets/All Things Y2K.jpg",
+    "assets/Bold Colors.jpg",
+    "assets/Bold Suits.jpg",
+    "assets/Colorblocking.jpg",
+    "assets/Fanny Packs.jpg",
+    "assets/Micro Minis.jpg",
+    "assets/More Metallics.jpg",
+    "assets/Overalls.jpg",
+    "assets/Parachute Pants.jpg",
+    "assets/Prairiecore.jpg",
+    "assets/Sheer Slips.jpg"
+  ];
+  List<String> springImagesText = [
+    "All Things Y2K",
+    "Bold Colors",
+    "Bold Suits",
+    "Colorblocking",
+    "Fanny Packs",
+    "Micro Minis",
+    "More Metallics",
+    "Overalls",
+    "Parachute Pants",
+    "Prairiecore",
+    "Sheer Slips",
+  ];
+  List<String> fallImages = [
+    "assets/Pop of Color.jpg",
+    "assets/Bare-Leg Fall.jpg",
+    "assets/Off-Duty.jpg",
+    "assets/Everyday Floral.jpg",
+    "assets/Sans-Pants.jpg",
+    "assets/Wild Fall.jpg",
+    "assets/Streetwear Fall.jpg",
+    "assets/Textural.jpg",
+    "assets/Rainy Day.jpg",
+    "assets/Leather Trench.jpg",
+    "assets/Transitional.jpg",
+    "assets/Cinched-Waist.jpg",
+    "assets/Classic Twist.jpg",
+    "assets/Asymmetric.jpg",
+    "assets/Ultra-Long Coat.jpg"
+  ];
+  List<String> fallImagesText = [
+    "Pop of Color",
+    "Bare-Leg Fall",
+    "Off-Duty",
+    "Everyday Floral",
+    "Sans-Pants",
+    "Wild Fall",
+    "Streetwear Fall",
+    "Textural",
+    "Rainy Day",
+    "Leather Trench",
+    "Transitional",
+    "Cinched-Waist",
+    "Classic Twist",
+    "Asymmetric",
+    "Ultra-Long Coat"
+  ];
+
+  List<String> trend = [];
+  List<String> trendText = [];
   bool showMore = false;
   
   @override
@@ -114,7 +332,8 @@ class _HomePageState extends State<HomePage> {
         ShowCaseWidget.of(context).startShowCase([...searchBar]);
       });
     }
-    
+    trend = allImages;
+    trendText = allImagesText;
   }
 
   @override
@@ -336,7 +555,29 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                         setState(() {
                           currentChoiceIndex =
-                              index; // Update the selected index
+                              index;
+                          switch(currentChoiceIndex){
+                            case 0:
+                              trend = allImages;
+                              trendText = allImagesText;
+                              break;
+                            case 1:
+                              trend = winterImages;
+                              trendText = winterImagesText;
+                              break;
+                            case 2:
+                              trend = summerImages;
+                              trendText = summerImagesText;
+                              break;
+                            case 3:
+                              trend = springImages;
+                              trendText = springImagesText;
+                              break;
+                            case 4:
+                              trend = fallImages;
+                              trendText = fallImagesText;
+                              break;
+                          }
                         });
                       },
                       child: Container(
@@ -377,7 +618,7 @@ class _HomePageState extends State<HomePage> {
                 height: 200,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: allImages.length,
+                  itemCount: trend.length,
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {},
@@ -390,7 +631,7 @@ class _HomePageState extends State<HomePage> {
                               child: AspectRatio(
                                 aspectRatio: 3 / 4,
                                 child: Image.asset(
-                                  allImages[index],
+                                  trend[index],
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -399,7 +640,7 @@ class _HomePageState extends State<HomePage> {
                             SizedBox(
                                 width: 130,
                                 child: Text(
-                                  allImagesText[index],
+                                  trendText[index],
                                   style: const TextStyle(
                                       fontSize: 14,
                                       fontFamily: 'Poppins',

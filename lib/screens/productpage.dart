@@ -137,6 +137,7 @@ class ProductPage extends StatefulWidget {
   });
 
   @override
+  // ignore: library_private_types_in_public_api
   _ProductPageState createState() => _ProductPageState();
 }
 
@@ -144,7 +145,7 @@ class _ProductPageState extends State<ProductPage>
     implements CameraKitFlutterEvents {
   int _selectedIndex = 0;
   int _selectedSizeIndex = 0;
-  int _currentPageIndex = 0;
+  final int _currentPageIndex = 0;
   int _selectedPhotoIndex = 0;
   bool _isfavouriteclicked = false;
   List<String> _displayedDescription = [];
@@ -297,8 +298,13 @@ class _ProductPageState extends State<ProductPage>
                     scrollPhysics: const NeverScrollableScrollPhysics(),
                     onPageChanged: (index, _) {
                       if (index == 2) {
-                        if (widget.isARTryOnAvailable) {
+                        if (widget.isARTryOnAvailable) {                       
                           initCameraKit();
+                          index = 0;
+                            _selectedIndex = 0;
+                            _carouselController.jumpToPage(
+                              0
+                            );
                         } else {
                           // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                           //     content: Text(
@@ -894,23 +900,37 @@ class _ProductPageState extends State<ProductPage>
                                   price: double.parse(product['price']),
                                   organizationImageurl: List<String>.from(
                                       product['organisationImageUrl']),
-                                  sizes: product['sizes'].length > 0
+                                  sizes: product['sizes'] != null &&
+                                          product['sizes'] is List
                                       ? List<String>.from(product['sizes'])
                                       : [],
-                                  redirectLinks: List<String>.from(
-                                      product['redirectLinks']),
-                                  images: List<String>.from(product['images']),
+                                  redirectLinks: product['redirectLinks'] !=
+                                              null &&
+                                          product['redirectLinks'] is List &&
+                                          product['redirectLinks'].isNotEmpty
+                                      ? List<String>.from(
+                                          product['redirectLinks'])
+                                      : [],
+                                  images: product['images'] != null &&
+                                          product['images'] is List
+                                      ? List<String>.from(product['images'])
+                                      : [],
                                   similarproducts:
-                                      product['similarProducts'].length > 0
+                                      product['similarProducts'] != null &&
+                                              product['similarProducts'] is List
                                           ? List<String>.from(
                                               product['similarProducts'])
                                           : [],
-                                  variants: product['variants'].length> 0
+                                  variants: product['variants'] != null &&
+                                          product['variants'] is List
                                       ? List<String>.from(product['variants'])
                                       : [],
                                   tags: List<String>.from(product['tags']),
-                                  description:
-                                      List<String>.from(product['description']),
+                                  description: product['description'] != null &&
+                                          product['description'] is List
+                                      ? List<String>.from(
+                                          product['description'])
+                                      : [],
                                   isAvailable:
                                       product['isAvailable'].toString() ==
                                           'true',

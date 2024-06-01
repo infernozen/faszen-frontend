@@ -1,8 +1,10 @@
 import 'package:faszen/screens/profile-section/profile_information.dart';
 import 'package:flutter/material.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 class EditProfilePage extends StatefulWidget {
-  const EditProfilePage({super.key});
+  final bool showProfileInfoHelp;
+  const EditProfilePage({super.key, required this.showProfileInfoHelp});
 
   @override
   _EditProfilePageState createState() => _EditProfilePageState();
@@ -16,6 +18,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   final locationController = TextEditingController();
   final termsOfUseController = TextEditingController();
   final aboutThisVersionController = TextEditingController();
+   List<GlobalKey> profile = List.generate(1, (_) => GlobalKey());
 
   String profileInfo = '';
   String shoppingSetting = '';
@@ -37,6 +40,26 @@ class _EditProfilePageState extends State<EditProfilePage> {
       aboutThisVersion = aboutThisVersionController.text;
     });
   }
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.showProfileInfoHelp) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ShowCaseWidget.of(context).startShowCase([...profile]);
+      });
+    }
+  }
+
+  void _navigateToProfileInfoPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ShowCaseWidget(builder: Builder(builder: (context) => const EditProfileInformation())),
+      ),
+    );
+  }
+  
 
   void validateMenuValues() {
     if (profileInfo.isEmpty ||
@@ -85,8 +108,20 @@ class _EditProfilePageState extends State<EditProfilePage> {
         child: ListView(
           children: [
             SizedBox(height: maxH * 0.05),
-
-            ListTile(
+             Showcase(
+                key: profile[0],
+                onBarrierClick: _navigateToProfileInfoPage,
+                onToolTipClick: _navigateToProfileInfoPage,
+                onTargetClick: _navigateToProfileInfoPage,
+                disposeOnTap: true,
+                descTextStyle: const TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500),
+                description:
+                    'This encloses all your information that could enhance your experience, a custom form is expected to be filled.',
+                targetBorderRadius: BorderRadius.circular(20),
+            child: ListTile(
               title: const Text('Profile Information',
                 style: TextStyle(
                   fontFamily: 'Poppins',
@@ -100,12 +135,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const EditProfileInformation(),
+                    builder: (context) => ShowCaseWidget(builder: Builder(builder: (context) => const EditProfileInformation()))
                   ),
                 );
               },
             ),
-            
+             ),
             SizedBox(height: maxH * 0.04), 
             
             ListTile(
