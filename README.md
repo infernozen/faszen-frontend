@@ -7,6 +7,8 @@ Faszen is a revolutionary fashion facilitator app designed specifically for the 
 - **Provider**: Used for state management, ensuring a smooth and responsive user experience.
 - **Lens Studio**: Used for implementing AR try-on models, enhancing the virtual shopping experience.
 
+> ***NOTE: This project requires Facebook authentication, Lens Studio, Google authentication, and other credentials to start up. You can check out the backend and deployment repository at [https://github.com/infernozen/faszen-backend-nodejs](https://github.com/infernozen/faszen-backend-nodejs). More deployment information will be provided there.***
+
 ## Demo Walkthrough
 *Explore the features and functionality of our award-winning project in this demo video.*
 
